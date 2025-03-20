@@ -4,11 +4,11 @@
 
 **Linguistic Questions:** Are Bilingual and Monolingual speakers identifiable? What features are more commong in which groups of speakers? What features are more common in spoken or written language productions and how does the language of production change this?
 
-**Corpus:** I plan to use the same corpus as identified earlier, the [RUEG Corpus](https://zenodo.org/records/3765218).
+**Corpus:** I plan to use the [RUEG Corpus](https://zenodo.org/records/3765218).
 
 **Plan:** Although it's a large corpus, I only plan to use the English and German data. For this, I will be utilizing the conll format of the data to create a machine learning model that can take such a format and classify/label a given conll format. Ideally, this model is similar to a Naive-Bayes Classifier so I can pick out and analyze specific features that the model identifies as relevant, however I will go with whatever is best suited for the data input.
 
-I'd will also compare the formality in the identification and a few other factors (such as age, location of speaker/how long in either language-speaking country) to see if that effects how accurate the model can be. 
+I will be analyzing the linguistic difference between these different groups of speakers to find linguistic differences that can be used as features in a classifier model. 
 
 In terms of the audio file usuage, there are a few tools I will try out in terms of audio file reading like the scipy wavfile method, librosa, pyAudio, or Tensro Flow and PyTorch (deep learning methods).
 
