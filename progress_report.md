@@ -29,7 +29,7 @@ Future Goals:
 
 Some other changes to my project
 - I will no longer be including an ESL or DSL corpus. For my current project plan and goals, it doesn't make a lot of sense for me.
-- After reading up on a CC0 license, I will publish the RUEG 0.3.0 corpus in my repo and have fully shared the information. BE WARNED that it is not the full dataset, as I have excluded the other three language exampled (and that is noted in the corpus)
+- After reading up on a CC0 license, I can publish the whole Dataset, however I will not because it is about 7GB and git does not want to push that. This is also to hope to keep my repo small. I have added data samples, however, and that is enough for me.
 - Researched licenses to reflect how I want my work to be shared
 - Additionally, I've updated my [project plan](https://github.com/Data-Science-for-Linguists-2025/DEU-ENG-Mono-and-Billingual-Speakers/blob/main/project_plan.md) to reflect my current goals after working with the data for a while now.
 
