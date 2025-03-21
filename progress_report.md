@@ -20,7 +20,7 @@ Data Sharing: I plan to share all of the relevant corpus in my repo, as it is fr
 #### 3/21/25 Lillian Carlson
 It may not look like a whole lot has changed, but a lot has happened behind the scenes. I've continuted working [here](https://github.com/Data-Science-for-Linguists-2025/DEU-ENG-Mono-and-Billingual-Speakers/blob/main/LoadingRUEGData.ipynb) to develop dataframes, however I discovered that in order to keep all the syntactic information represented in conll format, I should be using a conll parser. I chose the spacy conll library, but I was really stuck because of a very minor issue in many of the documents (quite literally, an extra newline character- so frustrating! and a HUGE thanks to Na-Rae for helping me figure this out). I have mostly been working on plaing with the conll format and cleaning some of the data that isn't written in the correct format. My script has continued to be in the same Jupyter Notebook as I continue working with the ConLL data format, however when I start more linguisitc explorations to the data I will be creating a new script.
 
-For the mean time, I will continue exploring my data linguistically to discover features that are more or less common within the different groups of speakers.
+For the mean time, I will continue data cleaning and exploring my data linguistically to discover features that are more or less common within the different groups of speakers.
 
 Future Goals:
 - Explore the data more and find more differences in the data through linguistic inquiry
