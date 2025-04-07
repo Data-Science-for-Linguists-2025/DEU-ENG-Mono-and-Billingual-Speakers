@@ -33,3 +33,15 @@ Some other changes to my project
 - Researched licenses to reflect how I want my work to be shared
 - Additionally, I've updated my [project plan](https://github.com/Data-Science-for-Linguists-2025/DEU-ENG-Mono-and-Billingual-Speakers/blob/main/project_plan.md) to reflect my current goals after working with the data for a while now.
 
+## Progress Report 3
+#### 4/6/25 Lillian Carlson
+I had a lot of forward progress, but a LOT of backward progress here. I had to pivot (much later than I would have liked) to the stanza library after trying to wrestle with spacy for far too long. Luckily, that's sorted now and I've really begun to work and focus on exploring my data.
+
+As of right now, for what I am anticipating to explore, all the data processing is complete and I have lists of POS and token unigrams, bigrams, and trigrams pickled and have begun to explore them.
+
+So far with my exploration, I've found some interesting differences between stopword usuage between the languages. I have not spotted any glaring differences between bilingual and monolingual speakers, which is to be expected as I can't imagine much difference between heritage speakers of multiple languages. I will begin machine learning to uncover something that the human eye can't see, but perhaps algorithms can.
+
+Some changes to my project:
+- My [license](https://github.com/Data-Science-for-Linguists-2025/DEU-ENG-Mono-and-Billingual-Speakers/blob/main/LICENSE.md) is now fully updated and finished with unigrams, bigrams, and trigrams of POS marking and tokens
+- My [jupyter notebook](https://github.com/Data-Science-for-Linguists-2025/DEU-ENG-Mono-and-Billingual-Speakers/blob/main/LoadingRUEGData.ipynb) on loading and processing the data is essentially finished and I have begun to work in [this one](https://github.com/Data-Science-for-Linguists-2025/DEU-ENG-Mono-and-Billingual-Speakers/blob/main/ExploringRUEGData.ipynb) to explore the data
+    - When I eventually get to speech data, I will likely create a different notebook altogether
