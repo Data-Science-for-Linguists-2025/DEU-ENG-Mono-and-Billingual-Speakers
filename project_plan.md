@@ -2,7 +2,7 @@
 ### Lillian Carlson
 **Title:** Language and Accent Identification
 
-**Linguistic Questions:** Are Bilingual and Monolingual speakers identifiable? What features are more commong in which groups of speakers? What features are more common in spoken or written language productions and how does the language of production change this?
+**Linguistic Questions:** Are Bilingual and Monolingual speakers identifiable? What features are more common in which groups of speakers? What features are more common in spoken or written language productions and how does the language of production change this?
 
 **Corpus:** I plan to use the [RUEG Corpus](https://zenodo.org/records/3765218).
 
