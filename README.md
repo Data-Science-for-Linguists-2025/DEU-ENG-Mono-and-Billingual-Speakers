@@ -11,7 +11,13 @@ This contains an analysis on both monolingual and bilingual speakers of German a
 ## Dataset
 
 ## Repo Directory
-final report- bold this
+- **[Final Report]()**
+- [Project Plan]()
+- [Progress Reports]()
+- [License]()
+- [Exploring the Dataset]()
+- [Loading in the Dataset]()
+- [/data]()
 
 
 ## Guestbook! (Please visit!!)
