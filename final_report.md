@@ -1,6 +1,8 @@
 # Final Report
 Lillian Carlson
+
 lkc43@pitt.edu
+
 5/1/25
 
 ## Overview
@@ -38,10 +40,10 @@ Although there were metadata files, these files had incredibly in depth data tha
 As you can see, each individual ID tag had all the metadata information I needed to conduct my research and I used regular expressions to extract the features I needed and label them accordingly. I then put this metadata into a dataframe for use later down the line.
 
 ### Parsing
-To parse the ConLL-U files, I used stanza's parsing and created lists of lists dictionaries. Each dictionary was one word with all the syntactic information that was contained in a list (sentence) in a list (full elicitation of an individual speaker) within a list (all files of that type (language and monolingual/multilingual)). From this, I was able to extract lists of tokens and their POS tags.
+To parse the ConLL-U files, I used [stanza's parsing](https://nbviewer.org/github/Data-Science-for-Linguists-2025/DEU-ENG-Mono-and-Billingual-Speakers/blob/main/LoadingRUEGData.ipynb#Stanza-Parsing) and created lists of lists dictionaries. Each dictionary was one word with all the syntactic information that was contained in a list (sentence) in a list (full elicitation of an individual speaker) within a list (all files of that type (language and monolingual/multilingual)). From this, I was able to extract lists of tokens and their POS tags.
 
 ### Machine Learning
-The differences between monolingual and bilingual speakers were not identifiable with the human eye, but that does not mean they are not identifiable at all. My data was not split evenly between languages or linguality. This would be a problem because I did not want language/tokens to be an obvious indicator of mono/multilingualism. To combat this, I used only part of speech. For example, a sentence like "The brown fox jumped hastily" would be fed into the classifier as just "DET ADJ NOUN VERB ADV". Using a simple Naive Bayes classifier (so that I could later do feature extraction), I fed in each sentence as an individual unit with the tag of either monolingual or bilingual.
+The differences between monolingual and bilingual speakers were not identifiable with the human eye, but that does not mean they are not identifiable at all. My data was not split evenly between languages or linguality. This would be a problem because I did not want language/tokens to be an obvious indicator of mono/multilingualism. To combat this, I used only part of speech. For example, a sentence like "The brown fox jumped hastily" would be fed into the classifier as just "DET ADJ NOUN VERB ADV" (example [here](https://nbviewer.org/github/Data-Science-for-Linguists-2025/DEU-ENG-Mono-and-Billingual-Speakers/blob/main/ExploringRUEGData.ipynb#Cleaning-the-Data). Using a simple Naive Bayes classifier (so that I could later do feature extraction), I fed in each sentence as an individual unit with the tag of either monolingual or bilingual.
 
 
 ## Failures
@@ -58,13 +60,15 @@ I analyzed three levels of POS: unigram, bigram and trigram by hand before movin
 Additionally, it's important to keep in mind through all of this that the sizes of the data are mismatched. There is a lot more bilingual data than monolingual and more German data than English data, meaning that the monolingual English data had 64 total sentences to analyze compared to the German Bilingual which had 586 (the highest amount of the language and lingualism partitions).
 
 #### Unigram
-The only thing we can look at for unigram POS is the overall distribution. Although the best thing to do would be to look in the individual languages and compare the mono and bilingual data there, there was not a lot to be made. It looked similar within each language and was difficult to tell apart just by scanning with my eyes.
+[code here](https://nbviewer.org/github/Data-Science-for-Linguists-2025/DEU-ENG-Mono-and-Billingual-Speakers/blob/main/ExploringRUEGData.ipynb#Unigram-Exploration)
+The only thing we can look at for unigram POS is the overall distribution. Although the best thing to do would be to look in the individual languages and compare the mono and bilingual data there, there was not a lot to be made. It looked similar within each language and was difficult to tell apart just by scanning with my eyes. I [combined the bilingual and monolingual data](https://nbviewer.org/github/Data-Science-for-Linguists-2025/DEU-ENG-Mono-and-Billingual-Speakers/blob/main/ExploringRUEGData.ipynb#Combing-the-Bilingual-v-Monolingual) in both languages to look for overall patterns.
 
 ![Unigram Distribution](./images/mono_bi_unigram.png)
 
 This is a normalized distribution of the POS usage and the numbers on the side are the percentage of the data they take up. In the bilingual data, we can see more verbs, proper nouns, nouns, and determiners. This is reminiscent of the explicitness I previously mentioned (Pashkova). This is especially shocking to see that lexical categories such as verbs and nouns and proper nouns take up a higher percentage of the data in proportion to the monolingual data because there was more multilingual data which suggest more function words (as is the nature of language, typically longer corpora will proportionally more function words than a shorter corpora).
 
 #### Bigram
+[code here](https://nbviewer.org/github/Data-Science-for-Linguists-2025/DEU-ENG-Mono-and-Billingual-Speakers/blob/main/ExploringRUEGData.ipynb#Bigram-Exploration)
 The bigram data was a little more interesting, however it ran into the same issue that inside the languages looked pretty identical, so I lumped the bilingual and monolingual data together to investigate. When looking at the most common tokens, there were a shocking amount of lexical words but makes sense when you consider it is prompted speech.
 
 ![Unigram Distribution](./images/mono_bi_bigram.png)
@@ -72,14 +76,16 @@ The bigram data was a little more interesting, however it ran into the same issu
 This graph is a little harder to read, but the categories chosen were the top 15 most popular bigrams. The y-axis is the probability of the second word following the first word in the bigram. This makes a clear difference between "adjective, noun" bigrams, suggesting bilingual speakers will follow an adjective with a noun more commonly than a monolingual speaker would. This could suggest monolingual speakers use more strings of adjectives, so an "adjective adjective" bigram would be more popular.
 
 #### Trigram
+[code here](https://nbviewer.org/github/Data-Science-for-Linguists-2025/DEU-ENG-Mono-and-Billingual-Speakers/blob/main/ExploringRUEGData.ipynb#Trigram-Exploration)
 Trigrams are more difficult to analyze with the human eye because there are so many more factors, so it was harder to get a clear analysis with just the human eye. "Adposition determiner noun" was generally the most common sequence among all the partitions, but that's all that was noticeable with the human eye.
 
 ### Machine Learning Analysis
-Some was decipherable from analyzing this data with the human eye, but not enough, and nothing concrete. I used the Naive Bayes classifier so I could later perform feature extraction. I did this three times with different results. As mentioned before, I put in the sentences that just contained POS, so no actual word units, just POS markers. I used a tf-idf vectorizer to input the sentences into the classifier. I used all the default modifiers. There were no stopwords because it was just POS units and did not play set max features because I essentially had a 20 word language, and I wanted all unigrams, bigrams, and trigrams to guide the classifier and I knew it couldn't be too many. I did expand the n-gram range for each classifier to see what was most useful without overfitting. The Multinomial Naive Bayes classifier was also set as the default settings.
+[code here](https://nbviewer.org/github/Data-Science-for-Linguists-2025/DEU-ENG-Mono-and-Billingual-Speakers/blob/main/ExploringRUEGData.ipynb#Machine-Learning)
+Some was decipherable from analyzing this data with the human eye, but not enough, and nothing concrete. I used the Naive Bayes classifier so I could later perform feature extraction. I did this three times with different results. As mentioned before, I put in the sentences that just contained POS, so no actual word units, just POS markers. I used a tf-idf vectorizer to input the sentences into the classifier. I used all the default modifiers. There were no stopwords because it was just POS units and did not play set max features because I essentially had a 20 word language, and I wanted all unigrams, bigrams, and trigrams to guide the classifier and I knew it couldn't be too many. I did expand the n-gram range for each classifier to see what was most useful without overfitting. The Multinomial Naive Bayes classifier was also set as the default settings. Information on any more specific parameters can be seen [here](https://nbviewer.org/github/Data-Science-for-Linguists-2025/DEU-ENG-Mono-and-Billingual-Speakers/blob/main/ExploringRUEGData.ipynb#More-Training-and-Visualizing-Results)
 
 The baseline is 58.4%. That means if the classifier just guessed every document as bilingual (the majority in the dataset), it would achieve an accuracy of 58.4% and anything above that would suggest there is a genuine difference between bilingual and monolingual speakers.
 
-To test each classifier for chances of overfitting, I also implemented a stratified K-fold test with 5 partitions.
+To test each classifier for chances of overfitting, I also implemented a stratified K-fold test with 5 partitions which can be viewed [here](https://nbviewer.org/github/Data-Science-for-Linguists-2025/DEU-ENG-Mono-and-Billingual-Speakers/blob/main/ExploringRUEGData.ipynb#Verifying-Results)
 
 #### Unigram
 First, I just did unigrams. Essentially, this just identified the proportions of the different tags in the sentences to determine whether or not it was bilingual or monolingual. This ended up with an accuracy of 74.03%, which is significantly higher than the baseline.
